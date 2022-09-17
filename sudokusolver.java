@@ -8,10 +8,34 @@ public class sudokusolver {
             }
         }
     }
-    public void insert(int num; int row; int col){
-        grid[row][col]=num;
+    public boolean valid(int num, int row, int col){
+        boolean answer = false;
+        for(int i =0; i<9;i++){
+            if(grid[row][i]==num){
+                answer=false;
+                break;
+            }
+            if(grid[row][i]!=num){
+                answer=true;
+            }
+            if(grid[i][col]==num){
+                answer=false;
+                break;
+            }
+            if(grid[i][col]!=num){
+                answer=true;
+            }
+        }
+        return answer;
     }
-    public in
+    public  insert(int num, int row, int col){
+        if(valid(num, row, col)==true){
+            grid[row][col]=num;
+        }
+        else{
+
+        }
+    }
     public int[][] solvegrid(){
 
     }
