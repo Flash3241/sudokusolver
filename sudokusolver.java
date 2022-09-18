@@ -1,14 +1,16 @@
-import java.beans.Transient;
+// import java.beans.Transient;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class sudokusolver {
     public int[][] grid;
 
-    public void dokugrid(){
+    public sudokusolver(){
         grid=new int[9][9];
         for (int i=0; i<9; i++) {
             for (int j=0; j<9; j++) {
-                grid[i][j]= 0;
+                grid[i][j]=0;
             }
         }
     }
@@ -104,11 +106,88 @@ public class sudokusolver {
                 for(int s=1; s<=9;s++){
                     if(grid[boxrow+i][boxcol+j]==s && solutions.contains(s)){
                         solutions.remove(s);
+                    }
                 }
             }
         }
         return solutions;
     }
+    public static void printgrid(int[][] newgrid){
+        String line = "___________________";
+        String colline = "|";
+        System.out.println(line);
+        for (int row=0;row<9;row++) {
+            for (int col=0;col<9;col++) {
+            System.out.print(colline+newgrid[row][col]);                                          //setting the grid 
+            }
+            System.out.println(colline);
+        }
+        System.out.println(line);
+    }
+
+    public static void main(String[] args) {
+        if (unitTests()) {
+            System.out.println("All unit tests passed.\n");
+        } else {
+            System.out.println("ERROR: Failed test.\n");
+            return;
+        }
+        String solveornot="solve or insert";
+        String enternum ="enter number";
+        String enterrow ="enter row";
+        String entercol ="enter column";
+        String ans = "insert";
+        String sol = "solve";
+        sudokusolver sudoku = new sudokusolver();
+        Scanner scanner = new Scanner(System.in);
+        // sudoku.insert(3,2,1);
+        printgrid(sudoku.grid);
+        System.out.println(solveornot);
+        String answer = scanner.nextLine();
+        System.out.println(answer);
+        System.out.println(ans);
+        while(answer==ans){
+            System.out.println(enternum);
+            int num=scanner.nextInt();
+            System.out.println(enterrow);
+            int row=scanner.nextInt();
+            System.out.println(entercol);
+            int col=scanner.nextInt();
+            sudoku.insert(num, row, col);
+            printgrid(sudoku.grid);
+            System.out.println(solveornot);
+            answer=scanner.nextLine();
+        }
+        scanner.close();
+    }
+    public static boolean unitTests() {
+        return true;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // public int checkrow(int n){
     //     int variables=0;
     //     for(int i=0; i<9; i++){
