@@ -1,3 +1,6 @@
+import java.beans.Transient;
+import java.util.ArrayList;
+
 public class sudokusolver {
     public int[][] grid;
 
@@ -72,11 +75,66 @@ public class sudokusolver {
         if(valid(num, row, col)==true){
             grid[row][col]=num;
         }
-        else{
-
+    }
+    public ArrayList<Integer> possiblesol(int row, int col){
+        ArrayList<Integer> solutions= new ArrayList<Integer>();
+        solutions.add(1);
+        solutions.add(2);
+        solutions.add(3);
+        solutions.add(4);
+        solutions.add(5);
+        solutions.add(6);
+        solutions.add(7);
+        solutions.add(8);
+        solutions.add(9);
+        for(int i=0; i<9;i++){
+            for(int j=1; j<=9;j++){
+                if(grid[row][i]==j && solutions.contains(j)){
+                    solutions.remove(j);
+                }
+                if(grid[i][col]==j && solutions.contains(j)){
+                    solutions.remove(j);
+                }
+            }
         }
+        int boxrow=startrow(row);
+        int boxcol=startcol(col);
+        for(int i=0; i<3;i++){
+            for(int j=0;j<3;j++){
+                for(int s=1; s<=9;s++){
+                    if(grid[boxrow+i][boxcol+j]==s && solutions.contains(s)){
+                        solutions.remove(s);
+                }
+            }
+        }
+        return solutions;
     }
-    public int[][] solvegrid(){
-
-    }
+    // public int checkrow(int n){
+    //     int variables=0;
+    //     for(int i=0; i<9; i++){
+    //         if(grid[n][i]!=0){
+    //             variables+=1;
+    //         }
+    //     }
+    //     return variables;
+    // }
+    // public int checkcol(int n){
+    //     int variables=0;
+    //     for(int i=0; i<9; i++){
+    //         if(grid[i][n]!=0){
+    //             variables+=1;
+    //         }
+    //     }
+    //     return variables;
+    // }
+    // public int[][] solvegrid(){
+    //     for(int i=0; i<9; i++){
+    //         for(int j=0; j<9; j++){
+    //             if(checkrow(i)==8){
+    //                 for
+    //             }
+    //         }
+    //     }
+    // }
+    
 }
