@@ -95,6 +95,7 @@ public class sudokusolver {
         }
         System.out.println(line);
     }
+
     public static ArrayList<Integer> rowsol(int[][] board, int row){
         ArrayList<Integer> possol=new ArrayList<Integer>(9);
         possol.add(1);
@@ -108,7 +109,7 @@ public class sudokusolver {
         possol.add(9);
         for(int i=0; i<9;i++){
             if(possol.contains(board[row][i])){
-                possol.remove("board[row][i]");
+                possol.remove(board[row][i]);
             }
         }
         return possol;
@@ -233,7 +234,7 @@ public class sudokusolver {
         String enterrow ="enter row";
         String entercol ="enter column";
         String ans = "insert";
-        String sol = "solve";
+        //String sol = "solve";
         sudokusolver sudoku = new sudokusolver();
         Scanner scanner = new Scanner(System.in);
         // sudoku.insert(3,2,1);
