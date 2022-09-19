@@ -7,28 +7,28 @@ public class sudokusolver {
     public int[][] grid;
 
     public sudokusolver(){
-        grid=new int[9][9];
-        for (int i=0; i<9; i++) {
-            for (int j=0; j<9; j++) {
+        grid = new int[9][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
                 grid[i][j]=0;
             }
         }
     }
     public int startrow(int row){
-        if(row<3){
+        if(row < 3){
             return 0;
         }
-        if(row>=3 && row<6){
+        if(row >= 3 && row < 6){
             return 3;
         }
-        if(row>=6 && row<9){
+        if(row >= 6 && row < 9){
             return 6;
         }
         else return 0;
     }
 
     public int startcol(int col){
-        if(col<3){
+        if(col < 3){
             return 0;
         }
         if(col>=3 && col<6){
@@ -96,7 +96,7 @@ public class sudokusolver {
         System.out.println(line);
     }
     public static ArrayList<Integer> rowsol(int[][] board, int row){
-        ArrayList<Integer> possol=new ArrayList<Integer>();
+        ArrayList<Integer> possol=new ArrayList<Integer>(9);
         possol.add(1);
         possol.add(2);
         possol.add(3);
@@ -108,13 +108,13 @@ public class sudokusolver {
         possol.add(9);
         for(int i=0; i<9;i++){
             if(possol.contains(board[row][i])){
-                possol.remove(board[row][i]);
+                possol.remove("board[row][i]");
             }
         }
         return possol;
     }
     public static ArrayList<Integer> colsol(int[][] board, int col){
-        ArrayList<Integer> possol=new ArrayList<Integer>();
+        ArrayList<Integer> possol=new ArrayList<Integer>(9);
         possol.add(1);
         possol.add(2);
         possol.add(3);
@@ -159,7 +159,7 @@ public class sudokusolver {
         else return 0;
     }
     public static ArrayList<Integer> boxsol(int[][] board, int row, int col){
-        ArrayList<Integer> possol=new ArrayList<Integer>();
+        ArrayList<Integer> possol=new ArrayList<Integer>(9);
         possol.add(1);
         possol.add(2);
         possol.add(3);
